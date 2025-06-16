@@ -33,7 +33,7 @@ const Header = () => {
           </p>
           <div className="flex justify-center md:justify-start">
             <button
-              className="bg-white mt-5 rounded-full px-6 py-2 ml-8 text-black font-[outfit] font-medium hover:scale-105 transition ease-in"
+              className="bg-white text-black text-sm sm:text-base rounded-full px-6 py-2 ml-8 mt-5 font-[outfit] font-medium hover:bg-black border-2 border-white hover:text-white transition ease-in"
               onClick={() => navigate("/chat")}
             >
               TRY PROMPTLY

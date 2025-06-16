@@ -11,7 +11,7 @@ const Navbar = () => {
       </h1>
 
       <button
-        className="bg-white text-black text-sm sm:text-base rounded-full px-6 py-2 font-[outfit] font-medium hover:scale-105 transition-transform ease-in-out"
+        className="bg-white text-black text-sm sm:text-base rounded-full px-6 py-2 font-[outfit] font-medium hover:bg-black hover:text-white border-2 border-white transition ease-in "
         onClick={() => navigate("/chat")}
       >
         TRY PROMPTLY

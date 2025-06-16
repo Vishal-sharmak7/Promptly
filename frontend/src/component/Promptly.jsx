@@ -4,10 +4,14 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Header from "./Header";
 import Middle from "./Middle";
+import Footer from "./Footer/Footer";
+import Cta from "./cta/Cta";
+import WhyPromptly from "./main/WhyPromptly";
+import UsePromptlyFor from "./main/UsePromptlyFor";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Cards = () => {
+const Promptly = () => {
   useEffect(() => {
     gsap.utils.toArray(".card").forEach((card) => {
       gsap.to(card, {
@@ -61,7 +65,7 @@ const Cards = () => {
         {cardData.map((card, index) => (
           <div
             key={index}
-            className="card sticky top-[15vh] w-full bg-white text-black rounded-2xl grid grid-cols-1 md:grid-cols-2 items-center  gap-8 p-8 sm:p-[8vh]"
+            className="card sticky top-[15vh] w-full bg-gradient-to-br from-zinc-950 to-zinc-900 border border-zinc-700 backdrop-blur-sm  rounded-2xl grid grid-cols-1 md:grid-cols-2 items-center  gap-8 p-8 sm:p-[8vh]  "
           >
             <div>
               <h1 className="font-[outfit] font-bold text-start uppercase leading-none text-[5vw] sm:text-[4rem]">
@@ -83,7 +87,7 @@ const Cards = () => {
           </div>
         ))}
 
-        {/* Final Banner */}
+        
         <div className="card top-[15vh] w-full text-center text-white flex flex-col items-center justify-center gap-6 rounded-2xl py-[15vh] px-6">
           <h1 className="font-bold text-[12vw] sm:text-[8rem] uppercase flex flex-col items-center justify-center">
             <img
@@ -100,10 +104,13 @@ const Cards = () => {
           </h1>
         </div>
       </div>
-
-      <Middle />
+      <WhyPromptly/>
+      
+      <UsePromptlyFor/>
+      <Cta/>
+      <Footer/>
     </>
   );
 };
 
-export default Cards;
+export default Promptly;

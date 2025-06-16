@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { LuUserRound, LuMic, LuSend, LuLoader, LuHop } from "react-icons/lu";
 import axios from "axios";
+import icon from "../../../public/images/fabicon.png";
 
 const Gemini = () => {
   const [prompt, setPrompt] = useState("");
@@ -77,16 +78,14 @@ const Gemini = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-black">
-      {/* Navbar */}
-      <div className="flex items-center justify-between text-white text-lg sm:text-xl p-4 sm:p-5">
+    <div className="flex flex-col min-h-screen bg-black font-[outfit]">
+      <div className="sticky top-0 z-50 bg-black flex items-center justify-between text-white text-lg sm:text-xl p-4 sm:p-5 shadow-2xl shadow-blue-400/10">
         <p>PROMPTLY</p>
         <h3 className="text-xl sm:text-2xl">
           <LuUserRound />
         </h3>
       </div>
 
-      {/* Greeting Section */}
       {!hasPrompted && (
         <div className="max-w-[900px] w-full mx-auto">
           <div className="text-3xl sm:text-4xl md:text-[56px] font-medium my-12 px-4 text-gray-400 text-wrap">
@@ -97,36 +96,37 @@ const Gemini = () => {
             </p>
             <p>How can I help you today?</p>
           </div>
-
-         
         </div>
       )}
 
-      
       <div
         ref={resultRef}
-        className="flex-1 overflow-y-auto w-full max-w-[900px] mx-auto px-4 pb-[100px]"
+        className="flex-1 overflow-y-auto w-full mt-4 max-w-[900px] mx-auto px-4 pb-[100px]"
       >
         {chatHistory.map((msg, index) => (
           <div
             key={index}
-            className={`flex gap-2 items-start mb-4 ${
+            className={`flex gap-3 items-start mb-4 ${
               msg.role === "user" ? "text-white" : "text-white"
             }`}
           >
-            <h3 className="pt-1">
-              {msg.role === "user" ? <LuUserRound /> : <LuHop />}
+            <h3 className="pt-1 text-xl mt-2 ">
+              {msg.role === "user" ? (
+                <LuUserRound />
+              ) : (
+                <img src={icon} alt="AI" className="w-7 h-7  object-contain" />
+              )}
             </h3>
-            <pre className="whitespace-pre-wrap break-words max-w-full">
+
+            <pre className="whitespace-pre-wrap break-words px-4 py-3 rounded-2xl max-w-[80%] font-[outfit] bg-gradient-to-br from-zinc-950 to-zinc-900 text-white shadow-md">
               {msg.text}
             </pre>
           </div>
         ))}
       </div>
 
-      
       <div className="sticky bottom-0 bg-black w-full px-4 mt-10 max-w-[900px] mx-auto">
-        <div className="flex items-center justify-between gap-4 bg-gray-100 rounded-full">
+        <div className="flex items-center justify-between gap-4 bg-gray-100 rounded-full transition-shadow duration-300 focus-within:shadow-lg focus-within:shadow-blue-500/50">
           <input
             type="text"
             placeholder="Enter your prompt here"

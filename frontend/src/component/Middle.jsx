@@ -35,6 +35,9 @@ const Middle = () => {
           nemo, nihil iure neque explicabo laborum quo accusantium inventore
           consequuntur corrupti! Unde, animi.
         </p>
+        <div className="h-50">
+
+        </div>
       </div>
     </>
   );
