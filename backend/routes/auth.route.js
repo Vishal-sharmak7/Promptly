@@ -1,6 +1,6 @@
 import express from "express"
-import userRegister from "../controllers/userRegister.js"
-import registerValidation from "../middlewares/joi.validation.js"
+import user from "../controllers/userRegister.js"
+import validation from "../middlewares/joi.validation.js"
 
 
 
@@ -8,7 +8,8 @@ import registerValidation from "../middlewares/joi.validation.js"
 
 const router = express.Router() 
 
-router.post("/register",registerValidation, userRegister )
+router.post("/register",validation.registerValidation, user.userRegister )
+router.post("/register",validation.loginValidation, user.userLogin )
 
 
 export default router   

@@ -37,4 +37,25 @@ const userRegister = async (req, res) => {
   }
 };
 
-export default userRegister;
+const userLogin = async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res
+      .status(400)
+      .json({ success: false, message: "All fields are required" });
+  }
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(400).json({ message: "user not found, please register" });
+  }
+
+  const decryptpass = await bcrypt.compare(password , user.password)
+  if (decryptpass) {
+      return res
+      .status(400)
+      .json({ success: false, message: "Email or password is incorrect" });
+  }
+};
+
+export default { userRegister, userLogin };
