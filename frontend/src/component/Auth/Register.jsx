@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Footer from "../Footer/Footer";
 import { PiSmileyXEyesBold } from "react-icons/pi";
 import { BiHappyHeartEyes } from "react-icons/bi";
-import {toast} from "react-hot-toast"
+import { toast } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,10 +22,10 @@ const Register = () => {
     e.preventDefault();
     const { name, email, password } = registerData;
     if (!name || !email || !password) {
-      toast.error("Please enter name, email, and password.")
+      toast.error("Please enter name, email, and password.");
     }
     try {
-       const url = "http://localhost:3657/api/v1/register";
+      const url = `${import.meta.env.VITE_REACT_URL}register`;
 
       const response = await fetch(url, {
         method: "POST",
@@ -35,19 +36,16 @@ const Register = () => {
       });
 
       const result = await response.json();
-      const{success, message}=result
+      const { success, message, error } = result;
 
       if (success) {
-        
-          toast.success(message||"Regiter Successfully")
-      }else{
-        const details = error.details?.[0].message || "Registration failed";
+        toast.success(message || "Regiter Successfully");
+      } else if (error) {
+        const details = error?.details?.[0]?.message || "Registration failed";
         toast.error(details);
+      } else {
+        toast.error(message || "Something went wrong");
       }
-
-
-
-      console.log(result);
     } catch (error) {
       toast.error("Network or server error during registration.");
     }
@@ -108,7 +106,9 @@ const Register = () => {
               Register
             </button>
 
-            <i>Already have an account?</i>
+            <i>Already have an account? <Link to="/login" className="text-blue-600 underline text-[20px] hover:text-white transition ease-in">
+               Login
+            </Link></i>
           </div>
         </form>
       </div>
