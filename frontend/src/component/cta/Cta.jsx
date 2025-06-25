@@ -18,12 +18,19 @@ const Cta = () => {
         Chat with Promptly Now
       </div>
 
-      <div className="mt-5 text-center">
+      <div className="mt-5 flex gap-5 items-center justify-center  text-center">
         <button
-          className="bg-white text-black rounded-full px-6 py-2 font-medium font-[outfit] border-2 border-white hover:bg-black hover:text-white transition"
+          className="bg-white text-black rounded-full hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]  duration-300 px-6 py-2 font-medium font-[outfit] border-2 border-white hover:bg-black hover:text-white transition"
           onClick={() => navigate("/chat")}
         >
           TRY PROMPTLY
+        </button>
+
+        <button
+          className="bg-white text-black rounded-full hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]  duration-300 px-6 py-2 font-medium font-[outfit] border-2 border-white hover:bg-black hover:text-white transition"
+          onClick={() => navigate("/login")}
+        >
+          LOGIN
         </button>
       </div>
     </div>

@@ -3,7 +3,7 @@ import Footer from "../Footer/Footer";
 import { PiSmileyXEyesBold } from "react-icons/pi";
 import { BiHappyHeartEyes } from "react-icons/bi";
 import { toast } from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -12,6 +12,8 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate()
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -40,6 +42,7 @@ const Register = () => {
 
       if (success) {
         toast.success(message || "Regiter Successfully");
+        setTimeout(() => navigate("/login"), 2000);
       } else if (error) {
         const details = error?.details?.[0]?.message || "Registration failed";
         toast.error(details);
@@ -112,7 +115,7 @@ const Register = () => {
           </div>
         </form>
       </div>
-      <Footer />
+     
     </>
   );
 };

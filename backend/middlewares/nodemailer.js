@@ -41,7 +41,7 @@ export const greetOnMail = async ({ name, email }) => {
 
               .Top-head {
                 text-align: center;
-                font-size: 2rem;
+                font-size: 1rem;
                 color: #333333;
                 text-decoration: none;
               }
