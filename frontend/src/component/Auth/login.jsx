@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom';
-import Footer from '../Footer/Footer';
+
 import { PiSmileyXEyesBold } from 'react-icons/pi';
 import { BiHappyHeartEyes } from 'react-icons/bi';
 import toast from 'react-hot-toast';

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Footer from "../Footer/Footer";
+
 import { PiSmileyXEyesBold } from "react-icons/pi";
 import { BiHappyHeartEyes } from "react-icons/bi";
 import { toast } from "react-hot-toast";
