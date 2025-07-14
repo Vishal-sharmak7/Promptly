@@ -16,7 +16,7 @@ const Gemini = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       settimerexpiry(true);
-    }, 3*60*1000);
+    }, 3000);
     return () => clearTimeout(timer);
   },[]);
 
