@@ -14,18 +14,19 @@ const Gemini = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
-    if (token) {
-      settimerexpiry(true); 
-    } else {
-      const timer = setTimeout(() => {
-        settimerexpiry(true); 
-      }, 3*60*1000);
+  if (token) {
+    settimerexpiry(true); 
+  } else {
+    
+    const timeout = setTimeout(() => {
+      settimerexpiry(true);
+    }, 3 * 60 * 1000); 
 
-      return () => clearTimeout(timer);
-    }
-  }, []);
+    return () => clearTimeout(timeout); 
+  }
+}, []);
 
   useEffect(() => {
     if (resultRef.current) {
