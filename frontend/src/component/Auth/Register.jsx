@@ -38,11 +38,12 @@ const Register = () => {
       });
 
       const result = await response.json();
-      const { success, message, error } = result;
+      const { success, message, error,token } = result;
 
       if (success) {
         toast.success(message || "Regiter Successfully");
-        setTimeout(() => navigate("/login"), 2000);
+        localStorage.setItem("token" , token),
+        setTimeout(() => navigate("/"), 2000);
       } else if (error) {
         const details = error?.details?.[0]?.message || "Registration failed";
         toast.error(details);
