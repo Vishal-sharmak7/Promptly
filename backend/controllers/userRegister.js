@@ -8,12 +8,14 @@ const userRegister = async (req, res) => {
   try {
     const { email, name, password } = req.body;
 
+    // Check required fields
     if (!email || !name || !password) {
       return res
         .status(400)
         .json({ success: false, message: "All fields are required" });
     }
 
+    // Check if user already exists
     const userExist = await User.findOne({ email });
     if (userExist) {
       return res
@@ -21,15 +23,27 @@ const userRegister = async (req, res) => {
         .json({ success: false, message: "User already exists" });
     }
 
+    // Hash password
     const hashpassword = await bcrypt.hash(password, 10);
 
+    // Create new user
     const newUser = new User({ email, name, password: hashpassword });
     const savedUser = await newUser.save();
 
+    // Send welcome email
     greetOnMail({ name, email });
 
+    // Create JWT token
+    const token = jwt.sign(
+      { email: savedUser.email, _id: savedUser._id },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+
+    // Respond with success
     return res.status(201).json({
       success: true,
+      token,
       message: "User registered successfully",
       user: savedUser,
     });
@@ -38,6 +52,7 @@ const userRegister = async (req, res) => {
     return res.status(500).json({ success: false, message: "Server error" });
   }
 };
+
 
 //user Login
 /** jwt, bcrypt,  joi validation */
