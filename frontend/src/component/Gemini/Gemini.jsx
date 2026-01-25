@@ -3,7 +3,7 @@ import { LuUserRound, LuSend, LuLoader } from "react-icons/lu";
 import axios from "axios";
 import icon from "../../../public/images/fabicon.png";
 import { useNavigate } from "react-router-dom";
-import Register from "../Auth/register";
+import Register from "../Auth/Register";
 
 const Gemini = () => {
   const [prompt, setPrompt] = useState("");
